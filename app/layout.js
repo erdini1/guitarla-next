@@ -1,10 +1,10 @@
-import "normalize.css/normalize.css"
+import 'normalize.css/normalize.css';
 import '../styles/globals.css';
 import { Outfit } from 'next/font/google';
 
 // NEXT.JS incluye alojamiento automatico para cualquier archivo de fuente.
 const outfit = Outfit({
-  weight: ["400", "700", "900"],
+  weight: ['400', '700', '900'],
   subsets: ['latin']
 });
 

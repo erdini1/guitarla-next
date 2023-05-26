@@ -1,5 +1,5 @@
 import 'normalize.css/normalize.css';
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import { Outfit } from 'next/font/google';
 
 // NEXT.JS incluye alojamiento automatico para cualquier archivo de fuente.

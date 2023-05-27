@@ -1,4 +1,3 @@
-import Link from 'next/link'
 
 
 export const metadata = {
@@ -10,10 +9,6 @@ export default function Nosotros() {
     return (
         <>
             <h1>Desde nosotros</h1>
-
-            <Link href="/" >
-                Inicio
-            </Link>
         </>
     )
 }

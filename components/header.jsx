@@ -1,10 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
+import styles from "@/styles/header.module.css"
 
 const Header = () => {
     return (
-        <header>
-            <div className="contenedor">
+        <header className={styles.header}>
+            <div className={`contenedor ${styles.barra}`}>
                 <Image
                     src="/img/logo.svg"
                     alt="Imagen Logo"
@@ -12,7 +13,7 @@ const Header = () => {
                     height={40}
                 />
 
-                <nav>
+                <nav className={styles.navegacion}>
                     <Link href="/" >Inicio</Link>
                     <Link href="/nosotros">Nosotros</Link>
                     <Link href="/tienda">Tienda</Link>

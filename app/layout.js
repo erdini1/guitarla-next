@@ -1,6 +1,8 @@
 import 'normalize.css/normalize.css';
-import '@/styles/globals.css';
 import { Outfit } from 'next/font/google';
+import '@/styles/globals.css';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
 // NEXT.JS incluye alojamiento automatico para cualquier archivo de fuente.
 const outfit = Outfit({
@@ -17,8 +19,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className={outfit.className}>
-        <h1>Desde Layout</h1>
+        <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

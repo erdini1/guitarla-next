@@ -9,7 +9,7 @@ export const metadata = {
 export default function Nosotros() {
     return (
         <>
-            <div>Desde nosotros</div>
+            <h1>Desde nosotros</h1>
 
             <Link href="/" >
                 Inicio

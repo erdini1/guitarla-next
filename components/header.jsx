@@ -1,23 +1,43 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import styles from "@/styles/header.module.css"
+import { usePathname } from "next/navigation"
 
 const Header = () => {
+
+    const pathname = usePathname()
+
     return (
         <header className={styles.header}>
             <div className={`contenedor ${styles.barra}`}>
-                <Image
-                    src="/img/logo.svg"
-                    alt="Imagen Logo"
-                    width={300}
-                    height={40}
-                />
+                <Link href={"/"}>
+                    <Image
+                        src="/img/logo.svg"
+                        alt="Imagen Logo"
+                        width={300}
+                        height={40}
+                    />
+                </Link>
 
                 <nav className={styles.navegacion}>
-                    <Link href="/" >Inicio</Link>
-                    <Link href="/nosotros">Nosotros</Link>
-                    <Link href="/tienda">Tienda</Link>
-                    <Link href="/blog">Blog</Link>
+                    <Link
+                        href="/"
+                        className={pathname === "/" ? styles.active : ""}
+                    >Inicio</Link>
+                    <Link
+                        href="/nosotros"
+                        className={pathname === "/nosotros" ? styles.active : ""}
+                    >Nosotros</Link>
+                    <Link
+                        href="/tienda"
+                        className={pathname === "/tienda" ? styles.active : ""}
+                    >Tienda</Link>
+                    <Link
+                        href="/blog"
+                        className={pathname === "/blog" ? styles.active : ""}
+                    >Blog</Link>
                 </nav>
             </div>
         </header>

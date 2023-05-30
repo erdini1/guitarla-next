@@ -1,4 +1,5 @@
 import Guitarra from "@/components/guitarra"
+import styles from "@/styles/grid.module.css"
 
 export const metadata = {
     title: "GuitarLa - Tienda",
@@ -13,19 +14,21 @@ async function getGuitarras() {
 const Tienda = async () => {
 
     const { data: guitarras } = await getGuitarras()
-    console.log(guitarras)
 
     return (
         <>
             <main className="contenedor">
                 <h2 className="heading">Nuestra Colección</h2>
 
-                {guitarras.map(guitarra => (
-                    <Guitarra
-                        key={guitarra.id}
-                        guitarra={guitarra.attributes}
-                    />
-                ))}
+                <div className={styles.grid}>
+                    {guitarras?.map(guitarra => (
+                        <Guitarra
+                            key={guitarra.id}
+                            guitarra={guitarra.attributes}
+                        />
+                    ))}
+                </div>
+
 
             </main>
         </>

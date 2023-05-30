@@ -1,20 +1,32 @@
-"use client"
 import Image from "next/image"
+import Link from "next/link"
+import styles from "@/styles/guitarras.module.css"
 
 const Guitarra = ({ guitarra }) => {
 
-    const {nombre, descripcion, precio, url, imagen} = guitarra
+    const { nombre, descripcion, precio, url, imagen } = guitarra
     // console.log(guitarra)
 
     return (
-        <div>
-            <h1>{nombre}</h1>
-            <Image 
+        <div className={styles.guitarra}>
+            <Image
                 src={imagen.data.attributes.formats.medium.url}
                 alt={`Imagen de guitarra ${nombre}`}
-                height={400}
-                width={300}
+                height={600}
+                width={400}
             />
+
+            <div className={styles.contenido}>
+                <h3>{nombre}</h3>
+                <p className={styles.descripcion}>{descripcion}</p>
+                <p className={styles.precio}>${precio}</p>
+                <Link
+                    href={`/guitarras/${url}`}
+                    className={styles.enlace}
+                >
+                    Ver Producto
+                </Link>
+            </div>
         </div>
     )
 }

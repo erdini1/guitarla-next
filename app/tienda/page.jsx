@@ -1,4 +1,4 @@
-import ListadoGuitarras from "@/components/listado-guitarras"
+import Guitarra from "@/components/guitarra"
 
 export const metadata = {
     title: "GuitarLa - Tienda",
@@ -15,15 +15,17 @@ const Tienda = async () => {
     const { data: guitarras } = await getGuitarras()
     console.log(guitarras)
 
-
     return (
         <>
             <main className="contenedor">
                 <h2 className="heading">Nuestra Colección</h2>
 
-                <ListadoGuitarras
-                    guitarras={guitarras}
-                />
+                {guitarras.map(guitarra => (
+                    <Guitarra
+                        key={guitarra.id}
+                        guitarra={guitarra.attributes}
+                    />
+                ))}
 
             </main>
         </>

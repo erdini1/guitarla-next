@@ -1,4 +1,5 @@
-
+import Image from "next/image"
+import styles from "@/styles/guitarras.module.css"
 
 export async function generateMetadata({ params, searchParams }) {
     const { data } = await getGuitarra(params.url)
@@ -14,13 +15,27 @@ async function getGuitarra(url) {
     return res.json()
 }
 
-const Producto = async ({ params }) => {
-    const { url } = params
+const Producto = async ({ params: { url } }) => {
     const { data: guitarra } = await getGuitarra(url)
-    console.log(guitarra)
+    const { nombre, descripcion, precio, imagen } = guitarra[0].attributes
+
+
 
     return (
-        <div>{url}</div>
+        <div className={styles.guitarra}>
+            <Image
+                src={imagen.data.attributes.url}
+                alt={`Imagen de guitarra ${nombre}`}
+                height={600}
+                width={400}
+            />
+
+            <div className={styles.contenido}>
+                <h3>{nombre}</h3>
+                <p className={styles.descripcion}>{descripcion}</p>
+                <p className={styles.precio}>${precio}</p>
+            </div>
+        </div>
     )
 }
 

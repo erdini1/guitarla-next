@@ -1,4 +1,5 @@
 import Post from "@/components/post"
+import styles from "@/styles/grid.module.css"
 
 export const metadata = {
     title: "GuitarLA - Blog",
@@ -20,7 +21,7 @@ const Blog = async () => {
     return (
         <main className="contenedor">
             <h1 className="heading">Blog</h1>
-            <div>
+            <div className={styles.grid}>
                 {posts?.map(post => (
                     <Post
                         key={post.id}

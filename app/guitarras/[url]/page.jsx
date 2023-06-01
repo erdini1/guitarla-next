@@ -11,7 +11,6 @@ export async function generateMetadata({ params, searchParams }) {
     } catch(error){
         console.error(error);
     }
-    
 }
 
 async function getGuitarra(url) {

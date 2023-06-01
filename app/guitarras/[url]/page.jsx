@@ -3,11 +3,15 @@ import styles from "@/styles/guitarras.module.css"
 
 export async function generateMetadata({ params, searchParams }) {
     const { data } = await getGuitarra(params.url)
-    const { nombre } = data[0].attributes
-    return {
-        title: `GuitarLA - Guitarra ${nombre}`,
-        description: `GuitarLA - Guitarra ${nombre}, Venta de guitarras, blog de musica`
+    try {
+        return {
+            title: `GuitarLA - Guitarra ${data[0].attributes.nombre}`,
+            description: `GuitarLA - Guitarra ${data[0].attributes.nombre}, Venta de guitarras, blog de musica`
+        }
+    } catch(error){
+        console.error(error);
     }
+    
 }
 
 async function getGuitarra(url) {
@@ -18,7 +22,6 @@ async function getGuitarra(url) {
 const Producto = async ({ params: { url } }) => {
     const { data: guitarra } = await getGuitarra(url)
     const { nombre, descripcion, precio, imagen } = guitarra[0].attributes
-
 
 
     return (

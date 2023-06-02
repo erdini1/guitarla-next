@@ -1,3 +1,6 @@
+
+
+// import { useState } from "react"
 import Image from "next/image"
 import styles from "@/styles/guitarras.module.css"
 
@@ -19,8 +22,18 @@ async function getGuitarra(url) {
 }
 
 const Producto = async ({ params: { url } }) => {
+
+    // const [cantidad, setCantidad] = useState(0)
+
     const { data: guitarra } = await getGuitarra(url)
     const { nombre, descripcion, precio, imagen } = guitarra[0].attributes
+
+    /* SI LO PONGO DEL LADO DEL CLIENTE NO ME FUNCIONA POR LO QUE NO PUEDO USAR HOOKS, VER SI MAS ADELANTE SACAN ALGUNA FORMA DE SOLUCIONARLO */
+    // console.log(cantidad)
+
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    // }
 
 
     return (
@@ -37,10 +50,16 @@ const Producto = async ({ params: { url } }) => {
                 <p className={styles.descripcion}>{descripcion}</p>
                 <p className={styles.precio}>${precio}</p>
 
-                <form className={styles.formulario}>
+                <form
+                    className={styles.formulario}
+                    // onSubmit={handleSubmit}
+                >
                     <label htmlFor="cantidad">Cantidad:</label>
 
-                    <select id="cantidad">
+                    <select
+                        id="cantidad"
+                        // onChange={e => setCantidad(+e.target.value)}
+                    >
                         <option value="0">-- Seleccione --</option>
                         <option value="1">1</option>
                         <option value="2">2</option>

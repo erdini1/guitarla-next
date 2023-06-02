@@ -1,4 +1,5 @@
 import Guitarra from "@/components/guitarra"
+import Curso from "@/components/curso"
 import Post from "@/components/post"
 import styles from "@/styles/grid.module.css"
 
@@ -11,6 +12,12 @@ async function getGuitarras() {
   const res = await fetch(`${process.env.API_URL}/guitarras/?populate=imagen`)
   return res.json()
 }
+
+async function getCurso() {
+  const res = await fetch(`${process.env.API_URL}/curso/?populate=imagen`)
+  return res.json()
+}
+
 async function getPosts() {
   const res = await fetch(`${process.env.API_URL}/posts/?populate=imagen`)
   return res.json()
@@ -21,9 +28,18 @@ export default async function Home() {
 
   //Asi se recomienda segun la documentación hacer llamados en paralelo
   const guitarrasData = getGuitarras()
+  const cursoData = getCurso()
   const postsData = getPosts()
 
-  const [{ data: guitarras }, { data: posts }] = await Promise.all([guitarrasData, postsData])
+  const [
+    { data: guitarras },
+    { data: curso },
+    { data: posts }
+  ] = await Promise.all([
+    guitarrasData,
+    cursoData,
+    postsData
+  ])
 
   return (
     <>
@@ -40,8 +56,14 @@ export default async function Home() {
         </div>
 
       </main>
-      <section>
-        <h1 className="heading">Blog</h1>
+
+      {/* No requiere key porque no es un listado */}
+      <Curso
+        curso={curso.attributes}
+      />
+
+      <section className="contenedor">
+        <h2 className="heading">Blog</h2>
 
         <div className={styles.grid}>
           {posts?.map(post => (
